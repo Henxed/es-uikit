@@ -5,7 +5,7 @@
   "type": "module",
   "main": "./dist/esui.umd.ts",
   "module": "./dist/esui.es.ts",
-  "types": "./dist/components/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -13,8 +13,7 @@
     ".": {
       "import": "./dist/esui.es.ts",
       "require": "./dist/esui.umd.ts"
-    },
-    "./styles": "./dist/style.css"
+    }
   },
   "scripts": {
     "dev": "vite",
