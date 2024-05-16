@@ -1,0 +1,50 @@
+{
+  "name": "ui-kit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/dragonekui.umd.ts",
+  "module": "./dist/dragonekui.es.ts",
+  "types": "./dist/components/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/dragonekui.es.ts",
+      "require": "./dist/dragonekui.umd.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "vue": ">=3"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.4.0",
+    "@storybook/addon-essentials": "^8.1.1",
+    "@storybook/addon-interactions": "^8.1.1",
+    "@storybook/addon-links": "^8.1.1",
+    "@storybook/blocks": "^8.1.1",
+    "@storybook/builder-vite": "^8.1.1",
+    "@storybook/test": "^8.1.1",
+    "@storybook/vue3": "^8.1.1",
+    "@storybook/vue3-vite": "^8.1.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "storybook": "^8.1.1",
+    "tailwindcss": "^3.4.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6"
+  }
+}
