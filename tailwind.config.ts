@@ -1,5 +1,4 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
 
 module.exports = {
     darkMode: "class",
@@ -25,5 +24,5 @@ module.exports = {
         },
       },
     },
-    plugins: [forms],
+    plugins: [],
 };
