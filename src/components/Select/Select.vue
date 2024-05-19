@@ -1,7 +1,11 @@
 <template>
-  <label v-if="label" :for="id" class="block text-sm font-medium leading-6 text-gray-900" :class="{'text-red-600' : errors}">{{ label }}:</label>
+  <label v-if="label" :for="id" class="block text-sm font-medium leading-6 text-gray-900" :class="{'text-red-600': errors}">
+    {{ label }}:
+  </label>
   <div class="relative" ref="selectWrapper">
-    <div class="absolute text-sm top-2 left-0 flex items-center pl-3 pointer-events-none">{{ searchTerm ? '' : selectedLabel }}</div>
+    <div class="absolute text-sm top-2 left-0 flex items-center pl-3 pointer-events-none">
+      {{ searchTerm ? '' : selectedLabel }}
+    </div>
     <input
       type="text"
       :id="id"
@@ -15,8 +19,8 @@
       @keydown.enter.prevent="selectHighlightedOption"
       @input="filterOptions"
       :placeholder="selectedLabel ? '' : placeholder"
-      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed"
-      :class="{ 'ring-red-600 placeholder:text-red-600' : errors }"
+      class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed"
+      :class="{ 'ring-red-600 placeholder:text-red-600': errors }"
     />
     <div
       ref="dropdown"
@@ -24,7 +28,7 @@
       class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg"
       :class="dropdownPositionClass"
     >
-    <ul class="max-h-60 overflow-auto" v-if="optionsFiltered.length > 0" >
+      <ul class="max-h-60 overflow-auto" v-if="optionsFiltered.length > 0">
         <li
           v-for="(option, index) in optionsFiltered"
           :key="index"
@@ -57,6 +61,10 @@ interface Option {
   [key: string]: any;
 }
 
+interface ErrorData {
+  [key: string | number]: string[] | string | null;
+}
+
 interface Props {
   id: string;
   label: string | null;
@@ -64,18 +72,19 @@ interface Props {
   placeholder: string;
   valueKey: string;
   labelKey: string;
-  errors: string | string[] | null;
+  errors?: ErrorData | null;
+  modelValue?: any;
 }
+
 const props = withDefaults(defineProps<Props>(), {
   id: `select-${nanoid()}`,
-  type: 'text',
   label: null,
   valueKey: 'id',
   labelKey: 'label',
   placeholder: 'Выберите значение',
   errors: null,
   modelValue: null,
-})
+});
 
 const emits = defineEmits(['update:modelValue']);
 
@@ -165,4 +174,3 @@ onUnmounted(() => {
   document.removeEventListener('click', closeDropdownOnClickOutside);
 });
 </script>
-

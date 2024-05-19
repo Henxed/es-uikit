@@ -1,30 +1,47 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Select from './Select.vue';
 
-// Экспортируем компонент
+interface Option {
+  id: string;
+  label: string;
+}
+
 export default {
   title: 'Components/Select',
   component: Select,
-};
+} as Meta<typeof Select>;
 
-// Создаем шаблон для нашей истории
-const Template = (args, { argTypes }) => ({
+const Template: StoryFn<typeof Select> = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Select },
-  template: '<Select v-bind="$props" />',
+  setup() {
+    const options: Option[] = [
+      { id: '1', label: 'Option 1' },
+      { id: '2', label: 'Option 2' },
+      { id: '3', label: 'Option 3' },
+    ];
+    return { args, options };
+  },
+  template: '<Select v-bind="args" :options="options" />',
 });
 
-// История для компонента Select
 export const Default = Template.bind({});
 Default.args = {
-  id: 'select-1',
-  label: 'Select Label',
-  options: [
-    { id: 1, label: 'Option 1' },
-    { id: 2, label: 'Option 2' },
-    { id: 3, label: 'Option 3' },
-  ],
-  placeholder: 'Choose an option',
-  valueKey: 'id',
-  labelKey: 'label',
+  label: 'Choose an option',
+  placeholder: 'Select an option',
   errors: null,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  label: 'Choose an option',
+  placeholder: 'Select an option',
+  errors: 'This field is required.',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Choose an option',
+  placeholder: 'Select an option',
+  disabled: true,
 };

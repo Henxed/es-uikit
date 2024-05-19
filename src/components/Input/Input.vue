@@ -2,15 +2,19 @@
 import { ref, computed } from 'vue'
 import { nanoid } from 'nanoid'
 
+interface ErrorData {
+  [key: string]: string[] | string | null;
+}
+
 interface Props {
-  id?: string
-  type?: string
-  errors?: string[] | string | null
-  label?: string | null
-  help?: string | null
-  symbol?: string | null
-  placeholder?: string
-  modelValue?: string | number | null
+  id?: string;
+  type?: string;
+  errors?: ErrorData | null;
+  label?: string | null;
+  help?: string | null;
+  symbol?: string | null;
+  placeholder?: string;
+  modelValue?: string | number | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -49,7 +53,7 @@ const isRequired = computed(() => 'required' in props)
               
     </div>
     <div class="mt-2 relative">
-        <input :id="id" ref="input" v-bind="{ ...$attrs, class: null }" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed" :class="{ 'ring-red-600 placeholder:text-red-600' : errors }" :type="type" :value="modelValue" @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :placeholder="placeholder"/>
+        <input :id="id" ref="input" v-bind="{ ...$attrs, class: null }" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60  outline-nonedisabled:cursor-not-allowed" :class="{ 'ring-red-600 placeholder:text-red-600' : errors }" :type="type" :value="modelValue" @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :placeholder="placeholder"/>
         <div class="absolute flex pl-4 pointer-events-none text-gray-400/90 dark:text-slate-500 top-[9px]" v-if="symbol" >
             <div class="opacity-0">{{ modelValue || placeholder }}</div>
             {{ symbol }}

@@ -1,7 +1,10 @@
+interface ErrorData {
+    [key: string]: string[] | string | null;
+}
 interface Props {
     id?: string;
     type?: string;
-    errors?: string[] | string | null;
+    errors?: ErrorData | null;
     label?: string | null;
     help?: string | null;
     symbol?: string | null;
@@ -35,7 +38,7 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     type: string;
     label: string | null;
     id: string;
-    errors: string | string[] | null;
+    errors: ErrorData | null;
     help: string | null;
     placeholder: string;
     modelValue: string | number | null;

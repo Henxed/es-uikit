@@ -1,6 +1,9 @@
 interface Option {
     [key: string]: any;
 }
+interface ErrorData {
+    [key: string | number]: string[] | string | null;
+}
 interface Props {
     id: string;
     label: string | null;
@@ -8,11 +11,11 @@ interface Props {
     placeholder: string;
     valueKey: string;
     labelKey: string;
-    errors: string | string[] | null;
+    errors?: ErrorData | null;
+    modelValue?: any;
 }
 declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     id: string;
-    type: string;
     label: null;
     valueKey: string;
     labelKey: string;
@@ -23,7 +26,6 @@ declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_T
     "update:modelValue": (...args: any[]) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     id: string;
-    type: string;
     label: null;
     valueKey: string;
     labelKey: string;
@@ -35,8 +37,9 @@ declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_T
 }, {
     label: string | null;
     id: string;
-    errors: string | string[] | null;
+    errors: ErrorData | null;
     placeholder: string;
+    modelValue: any;
     valueKey: string;
     labelKey: string;
 }, {}>;

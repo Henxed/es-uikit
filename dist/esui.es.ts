@@ -85,7 +85,7 @@ const ee = { class: "flex items-center justify-between" }, te = ["for"], le = { 
           ref_key: "input",
           ref: i
         }, { ...e.$attrs, class: null }, {
-          class: ["block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed", { "ring-red-600 placeholder:text-red-600": e.errors }],
+          class: ["block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 outline-nonedisabled:cursor-not-allowed", { "ring-red-600 placeholder:text-red-600": e.errors }],
           type: e.type,
           value: e.modelValue,
           onInput: g[0] || (g[0] = (_) => w("update:modelValue", _.target.value)),
@@ -120,7 +120,8 @@ const ee = { class: "flex items-center justify-between" }, te = ["for"], le = { 
     placeholder: { default: "Выберите значение" },
     valueKey: { default: "id" },
     labelKey: { default: "label" },
-    errors: { default: null }
+    errors: { default: null },
+    modelValue: { default: null }
   },
   emits: ["update:modelValue"],
   setup(u, { emit: n }) {
@@ -159,7 +160,7 @@ const ee = { class: "flex items-center justify-between" }, te = ["for"], le = { 
         key: 0,
         for: t.id,
         class: f(["block text-sm font-medium leading-6 text-gray-900", { "text-red-600": t.errors }])
-      }, a(t.label) + ":", 11, pe)) : v("", !0),
+      }, a(t.label) + ": ", 11, pe)) : v("", !0),
       r("div", {
         class: "relative",
         ref_key: "selectWrapper",
@@ -181,7 +182,7 @@ const ee = { class: "flex items-center justify-between" }, te = ["for"], le = { 
           ],
           onInput: D,
           placeholder: h.value ? "" : t.placeholder,
-          class: f(["block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed", { "ring-red-600 placeholder:text-red-600": t.errors }])
+          class: f(["block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6 disabled:opacity-60 disabled:cursor-not-allowed", { "ring-red-600 placeholder:text-red-600": t.errors }])
         }, null, 42, fe), [
           [P, i.value]
         ]),

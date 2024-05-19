@@ -13,7 +13,8 @@
     ".": {
       "import": "./dist/esui.es.ts",
       "require": "./dist/esui.umd.ts"
-    }
+    },
+    "./tailwindcss.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",
